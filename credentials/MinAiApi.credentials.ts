@@ -39,21 +39,18 @@ export class MinAiApi implements ICredentialType {
       baseURL: 'https://api.1min.ai',
       url: '/api/features',
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+      body: {
         type: 'CHAT_WITH_AI',
         model: 'gpt-4o-mini',
         promptObject: {
-          prompt: 'Say "OK" in one word.',
+          prompt: 'Say OK in one word.',
           isMixed: false,
           imageList: [],
           webSearch: false,
           numOfSite: 1,
           maxWord: 10,
         },
-      }),
+      },
     },
   };
 }
