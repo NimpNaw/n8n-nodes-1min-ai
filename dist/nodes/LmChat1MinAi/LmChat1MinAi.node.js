@@ -52,6 +52,7 @@ class LmChat1MinAi {
                 categories: ['AI'],
                 subcategories: {
                     AI: ['Language Models', 'Root Nodes'],
+                    'Language Models': ['Chat Models (Recommended)'],
                 },
                 resources: {
                     primaryDocumentation: [
@@ -146,10 +147,6 @@ class LmChat1MinAi {
         return {
             response: chatModel,
         };
-    }
-    // Required by INodeType but not used for supply-data nodes
-    async execute() {
-        return [this.getInputData()];
     }
 }
 exports.LmChat1MinAi = LmChat1MinAi;

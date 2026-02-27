@@ -1,5 +1,4 @@
 import {
-  IExecuteFunctions,
   INodeType,
   INodeTypeDescription,
   ISupplyDataFunctions,
@@ -59,6 +58,7 @@ export class LmChat1MinAi implements INodeType {
       categories: ['AI'],
       subcategories: {
         AI: ['Language Models', 'Root Nodes'],
+        'Language Models': ['Chat Models (Recommended)'],
       },
       resources: {
         primaryDocumentation: [
@@ -166,8 +166,4 @@ export class LmChat1MinAi implements INodeType {
     };
   }
 
-  // Required by INodeType but not used for supply-data nodes
-  async execute(this: IExecuteFunctions) {
-    return [this.getInputData()];
-  }
 }

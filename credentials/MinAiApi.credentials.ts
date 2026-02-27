@@ -9,7 +9,7 @@ export class MinAiApi implements ICredentialType {
   name = 'minAiApi';
   displayName = '1min.AI API';
   documentationUrl = 'https://docs.1min.ai/docs/api/create-api-key';
-  icon = 'file:../nodes/LmChat1MinAi/1minai.svg' as const;
+  icon = 'file:1minai.svg' as const;
 
   properties: INodeProperties[] = [
     {

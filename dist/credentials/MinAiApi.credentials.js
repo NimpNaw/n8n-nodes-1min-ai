@@ -6,7 +6,7 @@ class MinAiApi {
         this.name = 'minAiApi';
         this.displayName = '1min.AI API';
         this.documentationUrl = 'https://docs.1min.ai/docs/api/create-api-key';
-        this.icon = 'file:../nodes/LmChat1MinAi/1minai.svg';
+        this.icon = 'file:1minai.svg';
         this.properties = [
             {
                 displayName: 'API Key',

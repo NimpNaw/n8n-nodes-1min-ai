@@ -22,7 +22,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp nodes/LmChat1MinAi/1minai.svg dist/nodes/LmChat1MinAi/1minai.svg && cp nodes/LmChat1MinAi/1minai.svg dist/credentials/1minai.svg",
     "dev": "tsc --watch",
     "format": "prettier --write \"**/*.ts\"",
     "lint": "eslint . --ext .ts",
