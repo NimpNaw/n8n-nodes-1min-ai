@@ -22,7 +22,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "tsc && gulp build:icons",
+    "build": "tsc",
     "dev": "tsc --watch",
     "format": "prettier --write \"**/*.ts\"",
     "lint": "eslint . --ext .ts",
@@ -44,7 +44,6 @@
   "devDependencies": {
     "@types/node": "^20.0.0",
     "eslint-plugin-n8n-nodes-base": "^1.16.1",
-    "gulp": "^4.0.2",
     "n8n-workflow": "^1.0.0",
     "prettier": "^3.0.0",
     "typescript": "^5.3.2"
@@ -53,6 +52,9 @@
     "n8n-workflow": ">=1.0.0"
   },
   "dependencies": {
-    "@langchain/core": "^0.3.0"
+    "@langchain/core": "^1.1.7"
+  },
+  "overrides": {
+    "form-data": "^4.0.4"
   }
 }
