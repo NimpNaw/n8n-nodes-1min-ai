@@ -24,7 +24,7 @@ class MinAiApi {
             type: 'generic',
             properties: {
                 headers: {
-                    Authorization: '=Bearer {{$credentials.apiKey}}',
+                    'API-KEY': '={{$credentials.apiKey}}',
                 },
             },
         };

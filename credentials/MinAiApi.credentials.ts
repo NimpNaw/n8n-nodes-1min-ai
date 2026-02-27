@@ -29,7 +29,7 @@ export class MinAiApi implements ICredentialType {
     type: 'generic',
     properties: {
       headers: {
-        Authorization: '=Bearer {{$credentials.apiKey}}',
+        'API-KEY': '={{$credentials.apiKey}}',
       },
     },
   };

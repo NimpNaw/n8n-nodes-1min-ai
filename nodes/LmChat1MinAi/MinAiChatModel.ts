@@ -132,7 +132,7 @@ export class MinAiChatModel extends BaseChatModel<BaseChatModelCallOptions> {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.apiKey}`,
+        'API-KEY': this.apiKey,
       },
       body: JSON.stringify(body),
     });

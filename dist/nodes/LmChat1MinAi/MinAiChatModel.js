@@ -69,7 +69,7 @@ class MinAiChatModel extends chat_models_1.BaseChatModel {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${this.apiKey}`,
+                'API-KEY': this.apiKey,
             },
             body: JSON.stringify(body),
         });
