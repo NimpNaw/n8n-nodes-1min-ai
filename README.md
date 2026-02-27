@@ -45,15 +45,7 @@
 
 ## Installation
 
-### Option 1 — npm (recommended for production)
-
-```bash
-npm install n8n-nodes-1min-ai
-```
-
-In your n8n `docker-compose.yml` or environment, add the package to `N8N_CUSTOM_EXTENSIONS` or install it via the n8n GUI under **Settings → Community Nodes**.
-
-### Option 2 — Self-hosted n8n via Docker
+### Option 1 — Self-hosted n8n via Docker
 
 This is the recommended method if you run n8n with Docker or Docker Compose.
 
@@ -104,7 +96,7 @@ The **1min.AI Chat Model** node will appear in n8n after the restart.
 >       - n8n_data:/home/node/.n8n
 > ```
 
-### Option 3 — Manual (bare-metal / development)
+### Option 2 — Manual (bare-metal / development)
 
 ```bash
 # 1. Clone the repo
