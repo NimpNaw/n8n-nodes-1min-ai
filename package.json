@@ -1,0 +1,58 @@
+{
+  "name": "n8n-nodes-1min-ai",
+  "version": "1.0.0",
+  "description": "n8n custom node for 1min.ai — compatible with the AI Agent node",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "1min.ai",
+    "1minai",
+    "ai",
+    "llm",
+    "langchain"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/NimpNaw/n8n-nodes-1min-ai",
+  "author": {
+    "name": "NimpNaw"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NimpNaw/n8n-nodes-1min-ai"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier --write \"**/*.ts\"",
+    "lint": "eslint . --ext .ts",
+    "lintfix": "eslint . --ext .ts --fix",
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/MinAiApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/LmChat1MinAi/LmChat1MinAi.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.1",
+    "gulp": "^4.0.2",
+    "n8n-workflow": "^1.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.3.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": ">=1.0.0"
+  },
+  "dependencies": {
+    "@langchain/core": "^0.3.0"
+  }
+}
