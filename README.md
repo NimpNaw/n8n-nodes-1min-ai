@@ -4,6 +4,12 @@
 
 ---
 
+## About this project
+
+This project was originally developed for my personal use to streamline my own workflows. I decided to share it openly in the hope that it might simplify the use of 1min.AI within n8n for others as well.
+
+---
+
 ## Node Features
 
 - **Unified Intelligence** — Access confirmed premium models (GPT-4o, DeepSeek R1, Mistral Large) using one single n8n credential.
