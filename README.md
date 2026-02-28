@@ -1,17 +1,17 @@
 # n8n-nodes-1min-ai
 
-> Custom n8n nodes for [1min.AI](https://1min.ai) — access GPT-4o, DeepSeek R1, Mistral, Text-to-Speech and Image Generation through a **single API key**, fully compatible with the **n8n AI Agent**.
+> Custom n8n nodes for [1min.AI](https://1min.ai) — access premium AI models, Text-to-Speech and Image Generation through a **single API key**, fully compatible with the **n8n AI Agent**.
 
 ---
 
-## Features
+## Node Features
 
-- **Multi-Model Chat** — Premium models like GPT-4o, DeepSeek R1 (Reasoner), and Mistral Large.
-- **AI Agent Compatible** — Use 1min.AI as a language model sub-node for any LangChain root node.
-- **Audio Suite** — High-quality Text-to-Speech (TTS) and Speech-to-Text (STT) via Whisper and OpenAI models.
-- **Image Generation** — Support for DALL-E 3, Midjourney, and Stable Diffusion.
-- **Optimized for Stability** — Models and options are pre-filtered based on confirmed API compatibility.
-- **Detailed Capacity Map** — Check real-world test results in [1minapi_capacity.md](./1minapi_capacity.md).
+- **Unified Intelligence** — Access confirmed premium models (GPT-4o, DeepSeek R1, Mistral Large) using one single n8n credential.
+- **AI Agent Native** — Optimized Chat Model node that supports "Tool Calling" and connects seamlessly to the AI Agent and LangChain chains.
+- **Ready-to-use Audio Actions** — Dedicated node for generating speech (TTS) or transcribing audio (STT) without complex API calls.
+- **Simplified Image Generation** — Easy interface for DALL-E 3 and Midjourney within your workflows.
+- **Built-in Compatibility** — Specifically tuned for n8n 1.29.4+ stability and Docker environments.
+- **Technical Mapping** — Integrated [Capacity Map](./1minapi_capacity.md) to help you choose the right model for the right task.
 
 ---
 
@@ -28,7 +28,6 @@ Connects to the **AI Agent** or **Basic LLM Chain**.
 
 ### 3. 1min.AI Image (Action node)
 - **Text-to-Image**: Generate visuals using `dall-e-3`, `midjourney`, or `flux-pro`.
-- *Note: Image generation is currently marked as unstable in the API. Check the capacity map.*
 
 ---
 
