@@ -20,9 +20,10 @@
     "type": "git",
     "url": "https://github.com/NimpNaw/n8n-nodes-1min-ai"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && cp nodes/LmChat1MinAi/1minai.svg dist/nodes/LmChat1MinAi/1minai.svg && cp nodes/LmChat1MinAi/1minai.svg dist/credentials/1minai.svg",
+    "build": "tsc && mkdir -p dist/nodes/LmChat1MinAi dist/nodes/MinAiAudio dist/nodes/MinAiImage dist/credentials && cp nodes/LmChat1MinAi/1minai.svg dist/nodes/LmChat1MinAi/1minai.svg && cp nodes/MinAiAudio/1minai.svg dist/nodes/MinAiAudio/1minai.svg && cp nodes/MinAiImage/1minai.svg dist/nodes/MinAiImage/1minai.svg && cp nodes/LmChat1MinAi/1minai.svg dist/credentials/1minai.svg",
+    "prepare": "npm run build",
     "dev": "tsc --watch",
     "format": "prettier --write \"**/*.ts\"",
     "lint": "eslint . --ext .ts",
@@ -38,22 +39,24 @@
       "dist/credentials/MinAiApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/LmChat1MinAi/LmChat1MinAi.node.js"
+      "dist/nodes/LmChat1MinAi/LmChat1MinAi.node.js",
+      "dist/nodes/MinAiAudio/MinAiAudio.node.js",
+      "dist/nodes/MinAiImage/MinAiImage.node.js"
     ]
   },
   "devDependencies": {
+    "@langchain/core": "^0.1.0",
+    "n8n-workflow": "^1.0.0",
     "@types/node": "^20.0.0",
     "eslint-plugin-n8n-nodes-base": "^1.16.1",
-    "n8n-workflow": "^1.0.0",
     "prettier": "^3.0.0",
     "typescript": "^5.3.2"
   },
   "peerDependencies": {
+    "@langchain/core": ">=0.1.0",
     "n8n-workflow": ">=1.0.0"
   },
-  "dependencies": {
-    "@langchain/core": "^1.1.7"
-  },
+  "dependencies": {},
   "overrides": {
     "form-data": "^4.0.4"
   }

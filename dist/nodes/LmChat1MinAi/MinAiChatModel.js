@@ -33,14 +33,18 @@ function extractLastUserPrompt(messages) {
 // ---------------------------------------------------------------------------
 class MinAiChatModel extends chat_models_1.BaseChatModel {
     constructor(params) {
-        var _a, _b, _c, _d;
+        var _a, _b;
         super(params);
+        // Added for n8n/LangChain tool compatibility
+        this._is_tool_calling = true;
         this.apiKey = params.apiKey;
         this.model = params.model;
         this.maxTokens = (_a = params.maxTokens) !== null && _a !== void 0 ? _a : 2048;
         this.temperature = (_b = params.temperature) !== null && _b !== void 0 ? _b : 0.7;
-        this.webSearch = (_c = params.webSearch) !== null && _c !== void 0 ? _c : false;
-        this.numOfSite = (_d = params.numOfSite) !== null && _d !== void 0 ? _d : 3;
+    }
+    // Necessary for LangChain tool binding
+    bindTools(tools, _kwargs) {
+        return this;
     }
     _llmType() {
         return 'min_ai';
@@ -56,8 +60,8 @@ class MinAiChatModel extends chat_models_1.BaseChatModel {
                 prompt,
                 isMixed: false,
                 imageList: [],
-                webSearch: this.webSearch,
-                numOfSite: this.numOfSite,
+                webSearch: false,
+                numOfSite: 1,
                 maxWord: this.maxTokens,
             },
         };

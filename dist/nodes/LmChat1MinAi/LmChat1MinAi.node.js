@@ -4,37 +4,19 @@ exports.LmChat1MinAi = void 0;
 const n8n_workflow_1 = require("n8n-workflow");
 const MinAiChatModel_1 = require("./MinAiChatModel");
 // ---------------------------------------------------------------------------
-// Available models on 1min.ai (as of February 2026)
+// Confirmed working models for CHAT_WITH_AI on 1min.ai
 // ---------------------------------------------------------------------------
 const MODELS = [
     // OpenAI
     { name: 'GPT-4o', value: 'gpt-4o' },
     { name: 'GPT-4o Mini', value: 'gpt-4o-mini' },
-    { name: 'GPT-4.1', value: 'gpt-4.1' },
-    { name: 'GPT-4.1 Mini', value: 'gpt-4.1-mini' },
     { name: 'GPT-4 Turbo', value: 'gpt-4-turbo' },
     { name: 'GPT-3.5 Turbo', value: 'gpt-3.5-turbo' },
-    // Anthropic Claude
-    { name: 'Claude 3.5 Sonnet', value: 'claude-3-5-sonnet-20241022' },
-    { name: 'Claude 3.5 Haiku', value: 'claude-3-5-haiku-20241022' },
-    { name: 'Claude 3 Opus', value: 'claude-3-opus-20240229' },
-    // Google
-    { name: 'Gemini 2.0 Flash', value: 'gemini-2.0-flash' },
-    { name: 'Gemini 1.5 Pro', value: 'gemini-1.5-pro' },
-    { name: 'Gemini 1.5 Flash', value: 'gemini-1.5-flash' },
-    // Meta Llama
-    { name: 'Llama 3.3 70B', value: 'meta-llama/Llama-3.3-70B-Instruct-Turbo' },
-    { name: 'Llama 3.1 405B', value: 'meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo' },
-    // Mistral
-    { name: 'Mistral Large', value: 'mistral-large-latest' },
-    { name: 'Mistral Nemo', value: 'mistral-nemo' },
     // DeepSeek
     { name: 'DeepSeek Chat', value: 'deepseek-chat' },
-    { name: 'DeepSeek R1', value: 'deepseek-reasoner' },
-    // Grok
-    { name: 'Grok 2', value: 'grok-2' },
-    // Perplexity
-    { name: 'Perplexity Sonar', value: 'llama-3.1-sonar-large-128k-online' },
+    { name: 'DeepSeek R1 (Reasoner)', value: 'deepseek-reasoner' },
+    // Mistral
+    { name: 'Mistral Large', value: 'mistral-large-latest' },
 ];
 class LmChat1MinAi {
     constructor() {
@@ -44,25 +26,16 @@ class LmChat1MinAi {
             icon: 'file:1minai.svg',
             group: ['transform'],
             version: 1,
-            description: 'Use 1min.AI as a language model for the AI Agent and other LangChain nodes. Provides access to GPT-4o, Claude, Gemini, Llama, DeepSeek, and more through a single API key.',
+            description: 'Use 1min.AI as a language model for the AI Agent. Confirmed support for GPT-4o, DeepSeek R1 and Mistral.',
             defaults: {
                 name: '1min.AI Chat Model',
             },
             codex: {
                 categories: ['AI'],
                 subcategories: {
-                    AI: ['Language Models', 'Root Nodes'],
-                    'Language Models': ['Chat Models (Recommended)'],
-                },
-                resources: {
-                    primaryDocumentation: [
-                        {
-                            url: 'https://docs.1min.ai/docs/api/intro',
-                        },
-                    ],
+                    AI: ['Chat Model'],
                 },
             },
-            // This node supplies data (acts as a sub-node / language model)
             inputs: [],
             outputs: [n8n_workflow_1.NodeConnectionTypes.AiLanguageModel],
             outputNames: ['Model'],
@@ -82,7 +55,7 @@ class LmChat1MinAi {
                     type: 'options',
                     options: MODELS.map((m) => ({ name: m.name, value: m.value })),
                     default: 'gpt-4o-mini',
-                    description: 'The AI model to use. All models are accessed through your single 1min.AI API key.',
+                    description: 'The AI model to use. Only models confirmed to work with 1min.ai API are listed.',
                 },
                 {
                     displayName: 'Options',
@@ -107,26 +80,6 @@ class LmChat1MinAi {
                             default: 0.7,
                             description: 'Controls randomness: 0 = deterministic, 1 = highly creative.',
                         },
-                        {
-                            displayName: 'Web Search',
-                            name: 'webSearch',
-                            type: 'boolean',
-                            default: false,
-                            description: 'Whether to allow the model to search the web for up-to-date information.',
-                        },
-                        {
-                            displayName: 'Number of Sites (Web Search)',
-                            name: 'numOfSite',
-                            type: 'number',
-                            typeOptions: { minValue: 1, maxValue: 10 },
-                            default: 3,
-                            displayOptions: {
-                                show: {
-                                    webSearch: [true],
-                                },
-                            },
-                            description: 'Number of web pages to consult when web search is enabled.',
-                        },
                     ],
                 },
             ],
@@ -141,8 +94,6 @@ class LmChat1MinAi {
             model,
             maxTokens: options.maxTokens,
             temperature: options.temperature,
-            webSearch: options.webSearch,
-            numOfSite: options.numOfSite,
         });
         return {
             response: chatModel,

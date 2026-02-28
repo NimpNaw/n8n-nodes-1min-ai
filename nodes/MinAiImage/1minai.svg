@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <rect width="60" height="60" rx="10" fill="#5B4FE9"/>
+  <rect x="8" y="8" width="44" height="44" rx="7" fill="#7B6FF0"/>
+  <text x="30" y="24" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#E8E4FF" text-anchor="middle">1min</text>
+  <text x="30" y="38" font-family="Arial,sans-serif" font-size="9" fill="#C4BDFF" text-anchor="middle">.AI</text>
+  <line x1="14" y1="43" x2="46" y2="43" stroke="#9D95F5" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="19" cy="49" r="2" fill="#9D95F5"/>
+  <circle cx="30" cy="49" r="2" fill="#C4BDFF"/>
+  <circle cx="41" cy="49" r="2" fill="#9D95F5"/>
+</svg>

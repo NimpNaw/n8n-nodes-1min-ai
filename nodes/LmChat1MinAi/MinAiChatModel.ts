@@ -16,8 +16,6 @@ export interface MinAiChatModelParams extends BaseChatModelParams {
   model: string;
   maxTokens?: number;
   temperature?: number;
-  webSearch?: boolean;
-  numOfSite?: number;
 }
 
 interface MinAiMessage {
@@ -85,8 +83,9 @@ export class MinAiChatModel extends BaseChatModel<BaseChatModelCallOptions> {
   readonly model: string;
   private readonly maxTokens: number;
   readonly temperature: number;
-  private readonly webSearch: boolean;
-  private readonly numOfSite: number;
+
+  // Added for n8n/LangChain tool compatibility
+  readonly _is_tool_calling = true;
 
   constructor(params: MinAiChatModelParams) {
     super(params);
@@ -94,8 +93,14 @@ export class MinAiChatModel extends BaseChatModel<BaseChatModelCallOptions> {
     this.model = params.model;
     this.maxTokens = params.maxTokens ?? 2048;
     this.temperature = params.temperature ?? 0.7;
-    this.webSearch = params.webSearch ?? false;
-    this.numOfSite = params.numOfSite ?? 3;
+  }
+
+  // Necessary for LangChain tool binding
+  bindTools(
+    tools: any[],
+    _kwargs?: Partial<BaseChatModelCallOptions>,
+  ): any {
+    return this;
   }
 
   _llmType(): string {
@@ -117,8 +122,8 @@ export class MinAiChatModel extends BaseChatModel<BaseChatModelCallOptions> {
         prompt,
         isMixed: false,
         imageList: [],
-        webSearch: this.webSearch,
-        numOfSite: this.numOfSite,
+        webSearch: false,
+        numOfSite: 1,
         maxWord: this.maxTokens,
       },
     };
